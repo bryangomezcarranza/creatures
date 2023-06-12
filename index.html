@@ -20,6 +20,11 @@
     
             }
 
+            /* div.creature {
+                background-color: yellow;
+                border-color: red;
+            } */
+
         </style>
     </head>   
     <body>
@@ -43,7 +48,8 @@
             <li>insect: dashed orange</li>
         </ul>
     </div>
-    <div class="creature">    
+    <div class="creature" data-home="land" data-type="animal"
+    ">    
         <img src="images/monkey.png" alt="monkey">
         <h3>Monkey</h3>
         <p>Monkeys are cute, but don't try to cuddle them.</p>
@@ -55,7 +61,7 @@
         <p>Hummingbirds are cute, but don't get in the way of their food.</p>
     </div>
         
-    <div class="creature">    
+    <div class="creature" data-home="land" data-type="animal">    
         <img src="images/spider.png" alt="spider">
         <h3>Spiders</h3>
     <p>Spiders are not cute, in fact they creep me out.</p>
@@ -74,7 +80,7 @@
         <p>Fish are not cute, but they taste good!</p>
     </div>
         
-    <div class="creature">    
+    <div class="creature" data-home="land" data-type="animal">    
         <img src="images/stinkbug.png" alt="stinkbug">
         <h3>Stink Bug</h3>
         <p>Stinkbugs are not cool!  Don't touch them!</p>
@@ -89,8 +95,7 @@
     <script>
 
         
-        function showHome()
-        {
+        function showHome() {
             /*
                 loop through all creatures
                 
@@ -99,7 +104,25 @@
                 if creature lives in air, yellow
                 
                 */
-               alert("showHome()");
+               let myHome = "";
+               const myNodeList = document.querySelectorAll("div.creature");
+               for (let i = 0; i < myNodeList.length; i++) {
+               
+               
+                myHome = myNodeList[i].dataset.home;
+
+                switch(myHome) {
+                    case "land":
+                        myNodeList[i].style.backgroundColor = "green";
+                        break;
+                    case "water":
+                        myNodeList[i].style.backgroundColor = "blue";
+                        break;
+                    case "air":
+                        myNodeList[i].style.backgroundColor = "red";
+                        break;
+                }
+               }
             
         }//end showHome()
         
